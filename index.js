@@ -142,7 +142,7 @@ hitButton.addEventListener("click", hitMe);
 
 stayButton.addEventListener(`click`, () =>{
     
-    while(dHandValue()<19){
+    while(dHandValue()<pHandValue() && dHandValue()<19){
         dealerHand.push(randomCard(deck));
         // add the card images in addition to the values being pushed
         for(let i=2; i<dealerHand.length;i+=1){
