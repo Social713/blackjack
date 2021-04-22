@@ -13,6 +13,8 @@
 
 let playerHand =[];
 let dealerHand = [];
+let hitCount = 2;
+let stayCount = 2;
 let hitButton = document.querySelector("#hit-me");
 let stayButton = document.querySelector(`.stay`);
 let restartButton = document.querySelector(`.restart`);
@@ -138,8 +140,7 @@ const dHandValue = () =>{
 }
 
 // functionality for hit me button
-let hitCount = 2;
-let stayCount = 2;
+
 const hitMe = () => {
     // i = 2, because 2 cards
     playerHand.push(randomCard(deck));
