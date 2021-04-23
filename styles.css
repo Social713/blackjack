@@ -12,8 +12,16 @@ h1{
 h2{
     padding-bottom: 3%;
 }
+h3{
+
+}
 footer{
+    padding-top: 10%;
     padding-bottom: 2%;
+    text-align: center;
+    color: black;
+    font-family: fantasy;
+    font-size: 10px;
 }
 
 #game-zone {
