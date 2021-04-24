@@ -15,10 +15,16 @@
 
 let playerHand =[];
 let dealerHand = [];
+// storing the scores in global due to the ace logic
 let playerScore = 0;
 let dealerScore = 0;
+//  counters for adding the proper cards images
 let hitCount = 2;
 let standCount = 2;
+// total wins // don't want to count losses as it may be depressing
+let pWins = 0;
+let dWins = 0;
+
 let hitButton = document.querySelector("#hit-me");
 let standButton = document.querySelector(`.stand`);
 let restartButton = document.querySelector(`.restart`);
@@ -27,6 +33,10 @@ let dGoldMedal = document.querySelector(`.dealer-gold`);
 let pSliverMedal = document.querySelector(`.player-silver`);
 let dSliverMedal = document.querySelector(`.dealer-silver`);
 let aceButton = document.querySelector(`.ace-value`);
+let pTotal = document.querySelector(".player-value");
+let dTotal = document.querySelector(".dealer-value");
+let domPHand = document.querySelector(".player-hand");
+let domDHand = document.querySelector(".dealer-hand");
 
 // let ace1 = document.querySelector(`.ace-1`);
 // let ace11 = document.querySelector(".ace-11");
@@ -56,20 +66,20 @@ const pHandGen = () =>{
 // console.log(cardImages[playerHand[0]] + " and " + cardImages[playerHand[1]]);
     playerScore = pHandValue();
     if (cardImages[playerHand[0]]==10 && cardImages[playerHand[1]]==10){
-        document.querySelector(".player-hand").innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
-        document.querySelector(".player-value").innerHTML = `Total: ${playerScore}`;
+        domPHand.innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
+        pTotal.innerHTML = `Total: ${playerScore}`;
     }
     if (cardImages[playerHand[0]]==10){
-        document.querySelector(".player-hand").innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[playerHand[1]] + randomSuit(suits) +  '.png">';
-        document.querySelector(".player-value").innerHTML = `Total: ${playerScore}`;
+        domPHand.innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[playerHand[1]] + randomSuit(suits) +  '.png">';
+        pTotal.innerHTML = `Total: ${playerScore}`;
     }
     if (cardImages[playerHand[1]]==10){
-        document.querySelector(".player-hand").innerHTML = '<img class="cards" src="images/cards/' + cardImages[playerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
-        document.querySelector(".player-value").innerHTML = `Total: ${playerScore}`;
+        domPHand.innerHTML = '<img class="cards" src="images/cards/' + cardImages[playerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
+        pTotal.innerHTML = `Total: ${playerScore}`;
     }
     else {
-        document.querySelector(".player-hand").innerHTML = '<img class="cards" src="images/cards/' + cardImages[playerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[playerHand[1]] + randomSuit(suits) +  '.png">';
-        document.querySelector(".player-value").innerHTML = `Total: ${playerScore}`;
+        domPHand.innerHTML = '<img class="cards" src="images/cards/' + cardImages[playerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[playerHand[1]] + randomSuit(suits) +  '.png">';
+        pTotal.innerHTML = `Total: ${playerScore}`;
     }
 }
 
@@ -77,20 +87,20 @@ const pHandGen = () =>{
 const dHandGen = () =>{ 
     dealerScore = dHandValue();
     if(cardImages[dealerHand[0]]==10 && cardImages[dealerHand[1]]==10){
-        document.querySelector(".dealer-hand").innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
-        document.querySelector(".dealer-value").innerHTML = `Total: ${dealerScore}`;
+        domDHand.innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
+        dTotal.innerHTML = `Total: ${dealerScore}`;
     }
     if (cardImages[dealerHand[0]]==10){
-        document.querySelector(".dealer-hand").innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[dealerHand[1]] + randomSuit(suits) +  '.png">';
-        document.querySelector(".dealer-value").innerHTML = `Total: ${dealerScore}`;
+        domDHand.innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[dealerHand[1]] + randomSuit(suits) +  '.png">';
+        dTotal.innerHTML = `Total: ${dealerScore}`;
     }
     if (cardImages[dealerHand[1]]==10){
-        document.querySelector(".dealer-hand").innerHTML = '<img class="cards" src="images/cards/' + cardImages[dealerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
-        document.querySelector(".dealer-value").innerHTML = `Total: ${dealerScore}`;
+        domDHand.innerHTML = '<img class="cards" src="images/cards/' + cardImages[dealerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
+        dTotal.innerHTML = `Total: ${dealerScore}`;
     }
     else {
-        document.querySelector(".dealer-hand").innerHTML = '<img class="cards" src="images/cards/' + cardImages[dealerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[dealerHand[1]] + randomSuit(suits) +  '.png">';
-        document.querySelector(".dealer-value").innerHTML = `Total: ${dealerScore}`;
+        domDHand.innerHTML = '<img class="cards" src="images/cards/' + cardImages[dealerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[dealerHand[1]] + randomSuit(suits) +  '.png">';
+        dTotal.innerHTML = `Total: ${dealerScore}`;
     }
 }
 
@@ -107,6 +117,8 @@ const startGame = () => {
     dHandGen();
     hitCount = 2;
     standCount = 2;
+    document.querySelector(".dealer-wins").textContent = `Total wins: ${dWins}`;
+    document.querySelector(".player-wins").textContent = `Total wins: ${pWins}`;
 };
 
 
@@ -122,70 +134,37 @@ const hitMe = () => {
     playerScore = pHandValue();
     
     if (playerHand[0] == 11 && playerHand[hitCount]+playerScore>21){
-        
-        console.log(playerHand);
         playerHand.splice(0, 1, 1);
         playerScore = pHandValue();
-        console.log(playerHand);
     }
     if (playerHand[1] == 11 && playerHand[hitCount]+playerScore>21){
-    
-        console.log(playerHand);
         playerHand.splice(1, 1, 1);
         playerScore = pHandValue();
-        console.log(playerHand);
     }
     if (playerHand[hitCount] == 11 && playerHand[hitCount]+playerScore>21){
-       
-        console.log(playerHand);
         playerHand.splice(hitCount, 1, 1);
         playerScore = pHandValue();
         cardImages[playerHand[hitCount]] = "A";
-        console.log(playerHand);
     }    
     if(playerScore>21){
             // alert(`Sorry, ${playerName}, but the dealer won.`);
             hitButton.style.display = 'none';
             standButton.style.display = 'none';
             dGoldMedal.style.display = 'inline';
-            pSliverMedal.style.display = 'inline';            
+            pSliverMedal.style.display = 'inline';   
+            dWins+=1;         
         };
-        document.querySelector(".player-hand").innerHTML += '<img class="cards" src="images/cards/' + cardImages[playerHand[hitCount]] + randomSuit(suits) + '.png">';
-        document.querySelector(".player-value").innerHTML = `Total: ${playerScore}`;
+        domPHand.innerHTML += '<img class="cards" src="images/cards/' + cardImages[playerHand[hitCount]] + randomSuit(suits) + '.png">';
+        pTotal.innerHTML = `Total: ${playerScore}`;
         hitCount++;
-    
-    // if(playerHand.includes(11)&& pHandValue()>21) pHandValue() = pHandValue()-10;
 };
 
 // calculations for player and dealer hand values
 const pHandValue = () =>{
     return playerHand.reduce((acc, ccV)=>{
-        // playerScore= pHandValue();
-        // if(ccV === 11){
-        //     aceButton.style.display = 'inline';
-        //     ace1.addEventListener("click", ()=> {
-        //         playerScore-=10;
-        //         document.querySelector(".player-value").innerHTML = `Total: ${playerScore}`;
-        //         aceButton.style.display = 'none';
-        //     });
-        //     ace11.addEventListener("click", ()=> {
-        //         document.querySelector(".player-value").innerHTML = `Total: ${playerScore}`;
-        //         aceButton.style.display = 'none';
-        //     });
-        // }
         if (ccV===11 && acc>10){
             return acc = acc+ccV - 10;
         }
-
-
-        // if(acc+ccV>21){
-        //     // alert(`Sorry, ${playerName}, but the dealer won.`);
-        //     hitButton.style.display = 'none';
-        //     standButton.style.display = 'none';
-        //     dGoldMedal.style.display = 'inline';
-        //     pSliverMedal.style.display = 'inline';
-        //     return acc += ccV;             
-        // };
         return acc += ccV;     
     })  
 }
@@ -205,35 +184,30 @@ const dHandValue = () =>{
 startGame();
 
 
-
 hitButton.addEventListener("click", hitMe);
 
 standButton.addEventListener(`click`, () =>{
     dealerScore = dHandValue();
     playerScore = pHandValue();
-    
+
     while(dealerScore<playerScore && dealerScore<19){
         dealerHand.push(randomCard(deck));
         dealerScore = dHandValue();
+        if (dealerHand[0] == 11 && dealerHand[standCount]+dealerScore>21){
+            console.log(`1`)
+            dealerHand.splice(0, 1, 1);
+            dealerScore = dHandValue();
+        }
+    
+        if (dealerHand[1] == 11 && dealerHand[standCount]+dealerScore>21){
+            console.log(`2`)
+            dealerHand.splice(1, 1, 1);
+            dealerScore = dHandValue();   
+        }
         // add the card images in addition to the values being pushed
-        document.querySelector(".dealer-hand").innerHTML += '<img class="cards" src="images/cards/' + cardImages[dealerHand[standCount]] + randomSuit(suits) + '.png">';
-        document.querySelector(".dealer-value").innerHTML = `Total: ${dealerScore}`;
+        domDHand.innerHTML += '<img class="cards" src="images/cards/' + cardImages[dealerHand[standCount]] + randomSuit(suits) + '.png">';
+        dTotal.innerHTML = `Total: ${dealerScore}`;
         standCount++;
-    }
-
-    if (dealerHand[0] == 11 && dealerHand[standCount]+dealerScore>21){
-        dealerHand.splice(0, 1, 1);
-        dealerScore = dHandValue();
-    }
-
-    if (dealerHand[1] == 11 && dealerHand[standCount]+dealerScore>21){
-        dealerHand.splice(1, 1, 1);
-        dealerScore = dHandValue();   
-    }
-
-    if (dealerHand[standCount] == 11 && dealerHand[standCount]+dealerScore>21){
-        dealerHand.splice(standCount, 1, 1);
-        dealerScore = dHandValue();      
     }
         
     if(playerScore===dealerScore){
@@ -242,15 +216,17 @@ standButton.addEventListener(`click`, () =>{
             hitButton.style.display = 'none';
             standButton.style.display = 'none';
             pSliverMedal.style.display = 'inline';
-            dGoldMedal.style.display = 'inline';    
+            dGoldMedal.style.display = 'inline';  
+            dWins+=1;    
         }
         if(playerHand.length<dealerHand.length){
             hitButton.style.display = 'none';
             standButton.style.display = 'none';
             dSliverMedal.style.display = 'inline';
-            pGoldMedal.style.display = 'inline';    
+            pGoldMedal.style.display = 'inline';   
+            pWins+=1;    
         }
-        else{
+        if (playerHand.length===dealerHand.length){
             hitButton.style.display = 'none';
             standButton.style.display = 'none';
             pGoldMedal.style.display = 'inline';
@@ -264,6 +240,7 @@ standButton.addEventListener(`click`, () =>{
         standButton.style.display = 'none';
         pGoldMedal.style.display = 'inline';
         dSliverMedal.style.display = 'inline';
+        pWins+=1;  
     }
 
     if(dealerScore<=21 && dealerScore>playerScore) {
@@ -272,6 +249,7 @@ standButton.addEventListener(`click`, () =>{
         standButton.style.display = 'none';
         dGoldMedal.style.display = 'inline';
         pSliverMedal.style.display = 'inline';
+        dWins+=1;  
     }
 
     if(playerScore===21 && dealerScore!== 21) {
@@ -280,6 +258,7 @@ standButton.addEventListener(`click`, () =>{
         standButton.style.display = 'none';
         pGoldMedal.style.display = 'inline';
         dSliverMedal.style.display = 'inline';
+        pWins+=1;  
     }
 
     else if(playerScore<21 && playerScore>dealerScore) {
@@ -288,11 +267,15 @@ standButton.addEventListener(`click`, () =>{
         standButton.style.display = 'none';
         pGoldMedal.style.display = 'inline';
         dSliverMedal.style.display = 'inline';
+        pWins+=1;  
     }
 });
 
-restartButton.addEventListener('click',()=>{
+restartButton.addEventListener('click',()=>{  
+    if (playerScore<dealerScore && dealerScore<21){
+        dWins+=1;   
+    }
     startGame();
     hitButton.style.display = 'inline-block';
     standButton.style.display = 'inline';
-})
+});
