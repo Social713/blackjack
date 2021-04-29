@@ -58,7 +58,224 @@ const faceCard = ["10", "J", "Q", "K"];
 // randomization of deck, suits, and thus cardImages (inside startGame())
 const randomCard = (deck) => deck[Math.floor(Math.random() * deck.length)];
 const randomSuit = (suits) => suits[Math.floor(Math.random() * suits.length)];
-const randomFace = (face) => faceCard[Math.floor(Math.random() * faceCard.length)];
+const randomFace = (faceCard) => faceCard[Math.floor(Math.random() * faceCard.length)];
+let noMore = [];
+
+
+const pstopRepeat = () => {
+
+    let card1 = cardImages[playerHand[hitCount]];
+    let card2 = card1 + suits[0];
+    let card3 = card1 + suits[1];
+    let card4 = card1 + suits[2];
+    let card5 = card1 + suits[3];
+    if (noMore.includes(card2)){
+        if (noMore.includes(card3)){
+            if (noMore.includes(card4)){
+                noMore.push(card5);  
+                console.log(`stop1`, noMore, card5)   
+                return card5;  
+            }
+            noMore.push(card4); 
+            console.log(`stop2`, noMore, card4)    
+            return card4; 
+        }
+        noMore.push(card3);
+        console.log(`stop3`, noMore, card3)   
+        return card3;
+    }
+    else{
+        noMore.push(card2);
+        console.log(`stop4`, noMore, card2)
+        return card2;
+    }
+}
+
+const dstopRepeat = () => {
+
+    let card1 = cardImages[dealerHand[standCount]];
+    let card2 = card1 + suits[3];
+    let card3 = card1 + suits[2];
+    let card4 = card1 + suits[1];
+    let card5 = card1 + suits[0];
+    if (noMore.includes(card2)){
+        if (noMore.includes(card3)){
+            if (noMore.includes(card4)){
+                noMore.push(card5);  
+                console.log(`stop5`, noMore, card5)   
+                return card5;  
+            }
+            noMore.push(card4); 
+            console.log(`stop6`, noMore, card4)    
+            return card4; 
+        }
+        noMore.push(card3);
+        console.log(`stop7`, noMore, card3)   
+        return card3;
+    }
+    else{
+        noMore.push(card2);
+        console.log(`stop8`, noMore, card2)
+        return card2;
+    }
+}
+
+const pcardFaceDontRepeat0 = () =>{
+    let card1 = cardImages[playerHand[0]];
+    let card2 = card1 + suits[2];
+    let card3 = card1 + suits[3];
+    let card4 = card1 + suits[0];
+    let card5 = card1 + suits[1];
+    if (noMore.includes(card2)){
+        if (noMore.includes(card3)){
+            if (noMore.includes(card4)){
+                noMore.push(card5);  
+                console.log(`stop9`, noMore, card5)   
+                return card5;  
+            }
+            noMore.push(card4); 
+            console.log(`stop10`, noMore, card4)    
+            return card4; 
+        }
+        noMore.push(card3);
+        console.log(`stop11`, noMore, card3)   
+        return card3;
+    }
+    else{
+        noMore.push(card2);
+        console.log(`stop12`, noMore, card2)
+        return card2;
+    }
+}
+
+const pcardFaceDontRepeat1 = () =>{
+    let card1 = cardImages[playerHand[1]];
+    let card2 = card1 + suits[3];
+    let card3 = card1 + suits[0];
+    let card4 = card1 + suits[1];
+    let card5 = card1 + suits[2];
+    if (noMore.includes(card2)){
+        if (noMore.includes(card3)){
+            if (noMore.includes(card4)){
+                noMore.push(card5);  
+                console.log(`stop13`, noMore, card5)   
+                return card5;  
+            }
+            noMore.push(card4); 
+            console.log(`stop14`, noMore, card4)    
+            return card4; 
+        }
+        noMore.push(card3);
+        console.log(`stop15`, noMore, card3)   
+        return card3;
+    }
+    else{
+        noMore.push(card2);
+        console.log(`stop16`, noMore, card2)
+        return card2;
+    }
+}
+
+let dCard0;
+const dcardFaceDontRepeat0 = () =>{
+    let card1 = cardImages[dealerHand[0]];
+    let card2 = card1 + suits[2];
+    let card3 = card1 + suits[3];
+    let card4 = card1 + suits[0];
+    let card5 = card1 + suits[1];
+    if (noMore.includes(card2)){
+        if (noMore.includes(card3)){
+            if (noMore.includes(card4)){
+                dCard0 = card5
+                noMore.push(card5);   
+                console.log(`stop17`, noMore, card5) 
+                return card5;  
+            }
+            dCard0 = card4
+            noMore.push(card4);
+            console.log(`stop18`, noMore, card4)   
+            return card4; 
+        }
+        dCard0 = card3
+        noMore.push(card3);
+        console.log(`stop19`, noMore, card3)   
+        return card3;
+    }
+    else{
+        dCard0 = card2
+        noMore.push(card2);
+        console.log(`stop20`, noMore, card2)
+        return card2;
+    }
+    
+}
+
+let dCard1;
+const dcardFaceDontRepeat1 = () =>{
+    let card1 = cardImages[dealerHand[1]];
+    let card2 = card1 + suits[1];
+    let card3 = card1 + suits[2];
+    let card4 = card1 + suits[0];
+    let card5 = card1 + suits[3];
+    if (noMore.includes(card2)){
+        if (noMore.includes(card3)){
+            if (noMore.includes(card4)){
+                dCard1 = card5
+                noMore.push(card5);
+                console.log(`stop21`, noMore, card5)    
+                return card5;  
+            }
+            dCard1 = card4
+            noMore.push(card4);
+            console.log(`stop22`, noMore, card4)    
+            return card4; 
+        }
+        dCard1 = card3
+        noMore.push(card3);
+        console.log(`stop23`, noMore, card3)   
+        return card3;
+    }
+    else{
+        dCard1 = card2
+        noMore.push(card2);
+        console.log(`stop24`, noMore, card2)
+        return card2;
+    }
+}
+
+
+const repeatNo = () =>{
+    let card1 = randomFace(faceCard);
+    let card2 = card1 + suits[1];
+    let card3 = card1 + suits[0];
+    let card4 = card1 + suits[3];
+    let card5 = card1 + suits[2];
+    if (noMore.includes(card2)){
+        if (noMore.includes(card3)){
+            if (noMore.includes(card4)){
+                dCard1 = card5
+                noMore.push(card5);
+                console.log(`stop25`, noMore, card5)    
+                return card5;  
+            }
+            dCard1 = card4
+            noMore.push(card4);
+            console.log(`stop26`, noMore, card4)    
+            return card4; 
+        }
+        dCard1 = card3
+        noMore.push(card3);
+        console.log(`stop27`, noMore, card3)   
+        return card3;
+    }
+    else{
+        dCard1 = card2
+        noMore.push(card2);
+        console.log(`stop28`, noMore, card2)
+        return card2;
+    }
+}
+
 /////////// Q,K,A not popping up!!! <-- solved!
 
 const pHandGen = () =>{
@@ -66,41 +283,42 @@ const pHandGen = () =>{
 // console.log(cardImages[playerHand[0]] + " and " + cardImages[playerHand[1]]);
     playerScore = pHandValue();
     if (cardImages[playerHand[0]]==10 && cardImages[playerHand[1]]==10){
-        domPHand.innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
+        domPHand.innerHTML = '<img class="cards" src="images/cards/' + repeatNo() + '.png">' + '<img class="cards" src="images/cards/' + repeatNo() +  '.png">';
         pTotal.innerHTML = `Total: ${playerScore}`;
     }
-    if (cardImages[playerHand[0]]==10){
-        domPHand.innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[playerHand[1]] + randomSuit(suits) +  '.png">';
+    else if (cardImages[playerHand[0]]==10){
+        domPHand.innerHTML = '<img class="cards" src="images/cards/' + repeatNo() + '.png">' + '<img class="cards" src="images/cards/' + pcardFaceDontRepeat1() +  '.png">';
         pTotal.innerHTML = `Total: ${playerScore}`;
     }
-    if (cardImages[playerHand[1]]==10){
-        domPHand.innerHTML = '<img class="cards" src="images/cards/' + cardImages[playerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
+    else if (cardImages[playerHand[1]]==10){
+        domPHand.innerHTML = '<img class="cards" src="images/cards/' + pcardFaceDontRepeat0() + '.png">' + '<img class="cards" src="images/cards/' + repeatNo() +  '.png">';
         pTotal.innerHTML = `Total: ${playerScore}`;
     }
     else {
-        domPHand.innerHTML = '<img class="cards" src="images/cards/' + cardImages[playerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[playerHand[1]] + randomSuit(suits) +  '.png">';
+        domPHand.innerHTML = '<img class="cards" src="images/cards/' + pcardFaceDontRepeat0() + '.png">' + '<img class="cards" src="images/cards/' + pcardFaceDontRepeat1() +  '.png">';
         pTotal.innerHTML = `Total: ${playerScore}`;
     }
 }
 
+let backCardImage = '<img class="cards back-card" src="images/cards/red_back.png">';
 
 const dHandGen = () =>{ 
     dealerScore = dHandValue();
     if(cardImages[dealerHand[0]]==10 && cardImages[dealerHand[1]]==10){
-        domDHand.innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
-        dTotal.innerHTML = `Total: ${dealerScore}`;
+        domDHand.innerHTML = '<img class="cards" src="images/cards/' + repeatNo() + '.png">' + backCardImage;
+        dTotal.innerHTML = `Total: ?`;
     }
-    if (cardImages[dealerHand[0]]==10){
-        domDHand.innerHTML = '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[dealerHand[1]] + randomSuit(suits) +  '.png">';
-        dTotal.innerHTML = `Total: ${dealerScore}`;
+    else if (cardImages[dealerHand[0]]==10){
+        domDHand.innerHTML = '<img class="cards" src="images/cards/' + repeatNo() + '.png">' + backCardImage;
+        dTotal.innerHTML = `Total: ?`;
     }
-    if (cardImages[dealerHand[1]]==10){
-        domDHand.innerHTML = '<img class="cards" src="images/cards/' + cardImages[dealerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + randomFace(faceCard) + randomSuit(suits) +  '.png">';
-        dTotal.innerHTML = `Total: ${dealerScore}`;
+    else if (cardImages[dealerHand[1]]==10){
+        domDHand.innerHTML = '<img class="cards" src="images/cards/' + dcardFaceDontRepeat0() + '.png">' + backCardImage;
+        dTotal.innerHTML = `Total: ?`;
     }
     else {
-        domDHand.innerHTML = '<img class="cards" src="images/cards/' + cardImages[dealerHand[0]] + randomSuit(suits) + '.png">' + '<img class="cards" src="images/cards/' + cardImages[dealerHand[1]] + randomSuit(suits) +  '.png">';
-        dTotal.innerHTML = `Total: ${dealerScore}`;
+        domDHand.innerHTML = '<img class="cards" src="images/cards/' + dcardFaceDontRepeat0() + '.png">' + backCardImage;
+        dTotal.innerHTML = `Total: ?`;
     }
 }
 
@@ -112,21 +330,18 @@ const startGame = () => {
     dSliverMedal.style.display = 'none';
     // aceButton.style.display = 'none';
     playerHand = [randomCard(deck), randomCard(deck)];
-    dealerHand = [randomCard(deck), randomCard(deck)];    
+    dealerHand = [randomCard(deck), randomCard(deck)];  
+    noMore = [];
     pHandGen();
     dHandGen();
+    // dcardFaceDontRepeat0();
     hitCount = 2;
     standCount = 2;
-    document.querySelector(".dealer-wins").textContent = `Total wins: ${dWins}`;
-    document.querySelector(".player-wins").textContent = `Total wins: ${pWins}`;
+    $(".dealer-wins").text(`Total wins: ${dWins}`);
+    $(".player-wins").text(`Total wins: ${pWins}`);
+    $(`.back-card`).append();
 };
 
-
-
-// functionality for hit me button
-for (let i=0; i<playerHand.length; i+=1){
-    
-}
 
 const hitMe = () => {
     
@@ -148,13 +363,16 @@ const hitMe = () => {
     }    
     if(playerScore>21){
             // alert(`Sorry, ${playerName}, but the dealer won.`);
+            $(`.back-card`).remove();
+            $(`.dealer-hand`).append('<img class="cards" src="images/cards/' + dcardFaceDontRepeat1() + '.png">');
+            dTotal.innerHTML = `Total: ${dealerScore}`;
             hitButton.style.display = 'none';
             standButton.style.display = 'none';
             dGoldMedal.style.display = 'inline';
             pSliverMedal.style.display = 'inline';   
             dWins+=1;         
         };
-        domPHand.innerHTML += '<img class="cards" src="images/cards/' + cardImages[playerHand[hitCount]] + randomSuit(suits) + '.png">';
+        domPHand.innerHTML += '<img class="cards" src="images/cards/' + pstopRepeat() + '.png">';
         pTotal.innerHTML = `Total: ${playerScore}`;
         hitCount++;
 };
@@ -183,36 +401,47 @@ const dHandValue = () =>{
 
 startGame();
 
+$(`#hit-me`).on(`click`, hitMe);
+// hitButton.addEventListener("click", hitMe);
 
-hitButton.addEventListener("click", hitMe);
-
-standButton.addEventListener(`click`, () =>{
+$(`.stand`).on(`click`, () =>{
     dealerScore = dHandValue();
     playerScore = pHandValue();
-
+    $(`.back-card`).remove();
+    $(`.dealer-hand`).append('<img class="cards" src="images/cards/' + dcardFaceDontRepeat1() + '.png">');
+    
+    // domDHand.innerHTML = '<img class="cards" src="images/cards/' + dCard0 + '.png">' + backCardImage;
     while(dealerScore<playerScore && dealerScore<19){
+        
         dealerHand.push(randomCard(deck));
+        
         dealerScore = dHandValue();
         if (dealerHand[0] == 11 && dealerHand[standCount]+dealerScore>21){
             console.log(`1`)
             dealerHand.splice(0, 1, 1);
+           
             dealerScore = dHandValue();
         }
     
         if (dealerHand[1] == 11 && dealerHand[standCount]+dealerScore>21){
             console.log(`2`)
             dealerHand.splice(1, 1, 1);
+            
             dealerScore = dHandValue();   
         }
         // add the card images in addition to the values being pushed
-        domDHand.innerHTML += '<img class="cards" src="images/cards/' + cardImages[dealerHand[standCount]] + randomSuit(suits) + '.png">';
+     
+        $(`.dealer-hand`).append('<img class="cards" src="images/cards/' + dstopRepeat() + '.png">');
         dTotal.innerHTML = `Total: ${dealerScore}`;
         standCount++;
     }
         
     if(playerScore===dealerScore){
         // alert(`Draw!`);
+        dTotal.innerHTML = `Total: ${dealerScore}`;
+       
         if(playerHand.length>dealerHand.length){
+           
             hitButton.style.display = 'none';
             standButton.style.display = 'none';
             pSliverMedal.style.display = 'inline';
@@ -220,6 +449,7 @@ standButton.addEventListener(`click`, () =>{
             dWins+=1;    
         }
         if(playerHand.length<dealerHand.length){
+          
             hitButton.style.display = 'none';
             standButton.style.display = 'none';
             dSliverMedal.style.display = 'inline';
@@ -227,15 +457,19 @@ standButton.addEventListener(`click`, () =>{
             pWins+=1;    
         }
         if (playerHand.length===dealerHand.length){
+          
             hitButton.style.display = 'none';
             standButton.style.display = 'none';
             pGoldMedal.style.display = 'inline';
             dGoldMedal.style.display = 'inline';
         }
+        
     } 
 
     if(dealerScore>21) {
         // alert(`Dealer bust! ${playerName} wins!`);
+     
+        dTotal.innerHTML = `Total: ${dealerScore}`;
         hitButton.style.display = 'none';
         standButton.style.display = 'none';
         pGoldMedal.style.display = 'inline';
@@ -245,6 +479,8 @@ standButton.addEventListener(`click`, () =>{
 
     if(dealerScore<=21 && dealerScore>playerScore) {
         // alert(`Sorry, ${playerName}, but the dealer won.`);
+  
+        dTotal.innerHTML = `Total: ${dealerScore}`;
         hitButton.style.display = 'none';
         standButton.style.display = 'none';
         dGoldMedal.style.display = 'inline';
@@ -254,6 +490,8 @@ standButton.addEventListener(`click`, () =>{
 
     if(playerScore===21 && dealerScore!== 21) {
         // alert(`${playerName} wins! Blackjack!`);
+      
+        dTotal.innerHTML = `Total: ${dealerScore}`;
         hitButton.style.display = 'none';
         standButton.style.display = 'none';
         pGoldMedal.style.display = 'inline';
@@ -263,6 +501,8 @@ standButton.addEventListener(`click`, () =>{
 
     else if(playerScore<21 && playerScore>dealerScore) {
         // alert(`${playerName} wins! Blackjack!`);
+       
+        dTotal.innerHTML = `Total: ${dealerScore}`;
         hitButton.style.display = 'none';
         standButton.style.display = 'none';
         pGoldMedal.style.display = 'inline';
@@ -271,7 +511,7 @@ standButton.addEventListener(`click`, () =>{
     }
 });
 
-restartButton.addEventListener('click',()=>{  
+$(".restart").on('click',()=>{  
     if (playerScore<dealerScore && dealerScore<21){
         dWins+=1;   
     }
