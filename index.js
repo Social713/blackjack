@@ -430,10 +430,18 @@ $(`.stand`).on(`click`, () =>{
             dealerScore = dHandValue();   
         }
         // add the card images in addition to the values being pushed
-     
-        $(`.dealer-hand`).append('<img class="cards" src="images/cards/' + dstopRepeat() + '.png">');
-        dTotal.innerHTML = `Total: ${dealerScore}`;
-        standCount++;
+        if(dealerHand[standCount]==10){
+            $(`.dealer-hand`).append('<img class="cards" src="images/cards/' + repeatNo() + '.png">');
+            console.log(`1`)
+            dTotal.innerHTML = `Total: ${dealerScore}`;
+            standCount++;
+        }
+        else{
+            $(`.dealer-hand`).append('<img class="cards" src="images/cards/' + dstopRepeat() + '.png">');
+            console.log(`2`)
+            dTotal.innerHTML = `Total: ${dealerScore}`;
+            standCount++;
+        }
     }
         
     if(playerScore===dealerScore){
